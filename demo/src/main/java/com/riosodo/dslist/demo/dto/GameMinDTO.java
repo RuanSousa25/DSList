@@ -1,6 +1,7 @@
 package com.riosodo.dslist.demo.dto;
 
 import com.riosodo.dslist.demo.entities.Game;
+import com.riosodo.dslist.demo.projections.GameMinProjection;
 
 
 public class GameMinDTO {
@@ -30,6 +31,13 @@ private Long id;
 		this.year = entity.getYear();
 		this.imgUrl = entity.getImgUrl();
 		this.shortDescription = entity.getShortDescription();
+	}
+	public GameMinDTO(GameMinProjection proj) {
+		this.id = proj.getId();
+		this.title = proj.getTitle();
+		this.year = proj.getYear();
+		this.imgUrl = proj.getImgUrl();
+		this.shortDescription = proj.getShortDescription();
 	}
 	public Long getId() {
 		return id;

@@ -9,25 +9,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.riosodo.dslist.demo.dto.GameDTO;
+import com.riosodo.dslist.demo.dto.GameListDTO;
 import com.riosodo.dslist.demo.dto.GameMinDTO;
 import com.riosodo.dslist.demo.entities.Game;
+import com.riosodo.dslist.demo.servicies.GameListService;
 import com.riosodo.dslist.demo.servicies.GameService;
 
 @RestController
-@RequestMapping(value = "/games")
-public class GameController {
+@RequestMapping(value = "/lists")
+public class GameListController {
+	@Autowired
+	private GameListService gameListService;
+	
 	@Autowired
 	private GameService gameService;
 	
 	@GetMapping
-	public List<GameMinDTO> findAll(){
-		List<GameMinDTO> result = gameService.findAll();
+	public List<GameListDTO> findAll(){
+		List<GameListDTO> result = gameListService.findAll();
 		return result;
 	}
 	
-	@GetMapping(value = "/{id}")
-	public GameDTO findById(@PathVariable Long id) {
-		return gameService.findById(id);
+	@GetMapping(value = "/{listId}/games")
+	public List<GameMinDTO> findByList(@PathVariable Long listId) {
+		return gameService.findByList(listId);
 	}
 	
 }
