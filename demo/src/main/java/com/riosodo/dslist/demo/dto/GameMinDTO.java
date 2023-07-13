@@ -35,7 +35,7 @@ private Long id;
 	public GameMinDTO(GameMinProjection proj) {
 		this.id = proj.getId();
 		this.title = proj.getTitle();
-		this.year = proj.getYear();
+		this.year = proj.getGameYear();
 		this.imgUrl = proj.getImgUrl();
 		this.shortDescription = proj.getShortDescription();
 	}
